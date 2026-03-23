@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saffron & Sage | Fine Dining Gastronomy</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- PayPal JavaScript SDK (Sandbox) -->
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+            <a href="#" class="nav-logo">
+                <div class="logo-mark">
+                    <img src="images/logo_gen.png" alt="Saffron & Sage Logo" class="logo-img-gen">
+                    <div class="logo-container">
+                        <span class="logo-title">Saffron & Sage</span>
+                        <span class="logo-subtitle">Fine Dining Gastronomy</span>
+                    </div>
+                </div>
+            </a>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-list" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#menu" class="nav-link">Explore Food</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="payment-status.html" class="nav-link">Pay Status</a></li>
+                <li><a href="auth.html" class="nav-link">Sign In</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li class="nav-cta"><button class="btn btn-primary">+91 9967253466</button></li>
+                <li class="nav-cart" id="cart-toggle">
+                    <button class="btn btn-secondary"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg"></div>
+            <div class="container hero-content">
+                <p class="hero-welcome">Welcome to my cafe</p>
+                <h1 class="hero-title animate-title">Good food choices are good investment</h1>
+                <p class="hero-description">Experience the art of fine dining with locally sourced ingredients and master craftsmanship in every dish.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary" onclick="window.scrollTo({top: document.getElementById('menu').offsetTop - 100, behavior: 'smooth'})">Order Now <i class="fas fa-shopping-basket"></i></button>
+                    <a href="#about" class="btn btn-secondary">Learn More <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats">
+            <div class="container grid-stats">
+                <div class="stat-item">
+                    <h2 class="stat-count" id="count1">0</h2>
+                    <p class="stat-label">DISHES SERVED</p>
+                </div>
+                <div class="stat-item">
+                    <h2 class="stat-count" id="count2">0</h2>
+                    <p class="stat-label">HAPPY CLIENTS</p>
+                </div>
+                <div class="stat-item">
+                    <h2 class="stat-count" id="count3">0</h2>
+                    <p class="stat-label">CHEF'S SPECIALS</p>
+                </div>
+                <div class="stat-item">
+                    <h2 class="stat-count" id="count4">0</h2>
+                    <p class="stat-label">AWARDS WON</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section-padding">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-wrapper">
+                        <img src="images/img/img-1.png" alt="Fresh Ingredients" class="about-img">
+                    </div>
+                    <div class="about-text-content">
+                        <h2 class="section-title">We pride ourselves on making real food from the best ingredients.</h2>
+                        <p>Our commitment to quality starts with the soil. We partner with local farmers to bring you the freshest seasonal produce available.</p>
+                        <button class="btn btn-primary" id="open-sourcing">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="about-grid reverse">
+                    <div class="about-text-content">
+                        <h2 class="section-title">We make everything by hand with passion</h2>
+                        <p>Every pasta strand, every sauce, and every dessert is crafted by our expert culinary team using traditional techniques and modern flair.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Locally Sourced Produce</li>
+                            <li><i class="fas fa-check"></i> Traditional Handcrafted Dishes</li>
+                            <li><i class="fas fa-check"></i> Sustainable Kitchen Practices</li>
+                        </ul>
+                        <button class="btn btn-primary" id="open-craft">Learn More</button>
+                    </div>
+                    <div class="about-image-wrapper">
+                        <img src="images/img/img-2.png" alt="Handcrafted Food" class="about-img reveal">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Chef Section -->
+        <section id="chef" class="chef-section section-padding">
+            <div class="container">
+                <div class="chef-grid">
+                    <div class="chef-text reveal">
+                        <p class="hero-welcome">The Visionary</p>
+                        <h2 class="section-title">Meet Chef Abhishek</h2>
+                        <p class="chef-bio">
+                            "Gastronomy is the intersection of art and science. At Saffron & Sage, we don't just serve food; we serve memories. Every dish is a chapter of my journey, crafted with the precision of a scientist and the passion of an artist."
+                        </p>
+                        <div class="chef-signature">
+                            <span style="font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--primary);">Abhishek System</span>
+                            <p style="color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;">Executive Chef & Founder</p>
+                        </div>
+                        <button class="btn btn-primary mt-2" id="open-philosophy-btn">Explore My Philosophy</button>
+                    </div>
+                    <div class="chef-image-wrapper reveal">
+                        <div class="chef-image-card">
+                            <div class="chef-portrait-wrapper">
+                                <img src="images/abhi_alone.png" alt="Chef Abhishek Portrait" class="chef-portrait">
+                                <div class="chef-name-overlay">
+                                    <span class="chef-overlay-name">Chef Abhishek</span>
+                                    <span class="chef-overlay-title">Executive Chef &amp; Founder</span>
+                                    <span class="chef-overlay-exp">✦ 15+ Years of Excellence ✦</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu/Explore Section -->
+        <section id="menu" class="menu section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Explore Our Menu</h2>
+                    <p class="section-subtitle">A curated selection of our most popular dishes, designed to delight your senses.</p>
+                </div>
+
+                <div class="menu-grid" id="menu-container">
+                    <!-- Menu Items dynamically loaded from Backend (localStorage) -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="testimonials section-padding">
+            <div class="container">
+                <h2 class="section-title text-center">Testimonial</h2>
+                <div class="testimonial-slider" id="testimonial-slider">
+                    <div class="slide active">
+                        <div class="testimonial-card">
+                            <img src="images/review/abhi.avif" alt="Abhishek" class="testimonial-avatar">
+                            <p class="testimonial-text">"The food is absolutely amazing. The freshness of the ingredients really shines through in every bite."</p>
+                            <h5 class="testimonial-name">Abhishek — Founder & Chef</h5>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="testimonial-card">
+                            <img src="images/review/abhi22.png" alt="Sophia" class="testimonial-avatar">
+                            <p class="testimonial-text">"Fast delivery and incredible taste. Highly recommend the Saffron infused dishes and the Vegetarian Burger!"</p>
+                            <h5 class="testimonial-name">Sophia — Food Enthusiast</h5>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="slider-dots" id="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact Form Section (NEW) -->
+        <section id="contact" class="contact section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title text-center">Inquire & Connect</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p>Planning an event or have a specific dietary request? Our team is here to help you craft the perfect experience.</p>
+                        <ul class="contact-list">
+                            <li><i class="fas fa-phone-alt"></i> +91 9967253466</li>
+                            <li><i class="fas fa-envelope"></i> hello@saffronsage.com</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Mumbai, India</li>
+                        </ul>
+                    </div>
+                    <form id="contact-form" class="contact-form-main">
+                        <div class="form-row">
+                            <input type="text" id="con-name" placeholder="Full Name" required>
+                            <input type="email" id="con-email" placeholder="Email Address" required>
+                        </div>
+                        <input type="text" id="con-subject" placeholder="Subject" required>
+                        <textarea id="con-message" rows="5" placeholder="Your Message..." required></textarea>
+                        <button type="submit" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Payment Modal -->
+        <div id="payment-modal" class="modal">
+            <div class="modal-content reveal">
+                <span class="close-modal" id="close-modal">&times;</span>
+                <h2 class="section-title text-center">Checkout</h2>
+                <div class="checkout-summary">
+                    <div class="item-details">
+                        <img id="checkout-img" src="" alt="Item">
+                        <div class="item-text">
+                            <h3 id="checkout-name">Item Name</h3>
+                            <p id="checkout-price">$0.00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method Tabs -->
+                <div class="payment-tabs" style="display: flex; gap: 1rem; margin-bottom: 2rem; border-bottom: 2px solid #eee;">
+                    <button class="payment-tab active" data-target="card-payment" style="flex: 1; padding: 1rem; background: none; border: none; font-weight: 700; cursor: pointer; color: var(--primary); border-bottom: 3px solid var(--primary);">Card Payment</button>
+                    <button class="payment-tab" data-target="upi-payment" style="flex: 1; padding: 1rem; background: none; border: none; font-weight: 700; cursor: pointer; color: #888;">UPI / Scan QR</button>
+                </div>
+
+                <!-- Card/Online Payment View -->
+                <div id="card-payment" class="payment-view active">
+                    <div class="payment-selection-container" style="margin-top: 1rem;">
+                        <h5 class="text-center mb-1" style="color: var(--text-light); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Fast & Secure Checkout</h5>
+                        <div id="paypal-button-container" style="min-height: 150px; margin-bottom: 1rem;"></div>
+                        <div class="divider" style="display: flex; align-items: center; text-align: center; margin: 1.5rem 0; color: #ddd;">
+                            <span style="flex: 1; height: 1px; background: #eee;"></span>
+                            <span style="padding: 0 1rem; font-size: 0.75rem; font-weight: 700; color: #bbb;">OR PAY WITH CARD</span>
+                            <span style="flex: 1; height: 1px; background: #eee;"></span>
+                        </div>
+                    </div>
+                    
+                    <form id="mock-payment-form" class="payment-form">
+                    <div class="form-group">
+                        <label>Cardholder Name</label>
+                        <input type="text" id="card-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" placeholder="**** **** **** 1234" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry</label>
+                            <input type="text" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input type="password" placeholder="***" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 mt-2" id="pay-now-btn">Complete Payment</button>
+                    </form>
+                </div> <!-- Added missing closing div for card-payment -->
+
+                <!-- UPI Scanner View -->
+                <div id="upi-payment" class="payment-view" style="display: none; text-align: center;">
+                    <div class="upi-scanner-container" style="padding: 2rem; background: #fdfdfd; border-radius: 20px; border: 2px dashed #ddd; margin-bottom: 1.5rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem; color: var(--text-dark);">Scan QR Code to Pay</p>
+                        <!-- QR Code Placeholder (Using a FontAwesome square icon to represent QR if image fails) -->
+                        <div style="width: 200px; height: 200px; background: white; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; border-radius: 10px; position: relative;">
+                             <img src="images/qr_placeholder.png" alt="Payment QR" style="width: 90%; height: 90%; object-fit: contain;" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=SAFFRONSAGE_PAYMENT_ID_678234'">
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; color: #555;">Merchant ID: <strong>saffron.sage@upi</strong></p>
+                    </div>
+                    <div class="form-group" style="text-align: left;">
+                        <label>Enter Transaction ID after scanning</label>
+                        <input type="text" id="upi-trax-id" placeholder="12-digit UPI Ref No." style="width:100%; padding:1rem; border:1px solid #ddd; border-radius:12px;">
+                    </div>
+                    <button type="button" class="btn btn-primary w-100 mt-2" id="upi-verify-btn">Verify & Complete <i class="fas fa-check-double"></i></button>
+                </div>
+
+                <div id="payment-loader" style="display: none; text-align: center; margin-top: 1rem;">
+                    <i class="fas fa-spinner fa-spin"></i> Processing Securely...
+                </div>
+
+                
+                <!-- Success Receipt (Hidden by default) -->
+                <div id="receipt-container" style="display: none;">
+                    <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                    <h3>Payment Successful!</h3>
+                    <div class="receipt-details" id="receipt-area">
+                        <div class="receipt-header text-center">
+                            <h4>SAFFRON & SAGE</h4>
+                            <p>Premium Gastronomy</p>
+                            <hr>
+                        </div>
+                        <div class="receipt-row"><span>Date:</span> <span id="r-date">March 22, 2024</span></div>
+                        <div class="receipt-row"><span>TXN ID:</span> <span id="r-txn-id">PAYPAL-123456</span></div>
+                        <div class="receipt-row"><span>Amount:</span> <span id="r-amount">$10.59</span></div>
+                        <div class="receipt-row"><span>Payer:</span> <span id="r-payer">John Doe</span></div>
+                        <div class="receipt-row"><span>Status:</span> <span class="badge">COMPLETED</span></div>
+                        <div class="receipt-footer text-center">
+                            <p>Thank you for dining with us!</p>
+                        </div>
+                    </div>
+                    <div class="receipt-actions">
+                        <button class="btn btn-secondary w-100" id="download-receipt">Download (.TXT) <i class="fas fa-file-download"></i></button>
+                        <button class="btn btn-secondary w-100 mt-2" id="print-receipt">Print Bill <i class="fas fa-print"></i></button>
+                        <button class="btn btn-primary w-100 mt-2" id="receipt-cancel-btn">Back to Selection</button>
+                    </div>
+                </div>
+
+                <p class="secure-text"><i class="fas fa-shield-alt"></i> Secure 256-bit SSL Encrypted Payment</p>
+            </div>
+        </div>
+        <!-- Philosophy Modal -->
+        <div id="philosophy-modal" class="modal">
+            <div class="modal-content reveal">
+                <span class="close-modal" id="close-philosophy">&times;</span>
+                <h2 class="section-title text-center">My Culinary Philosophy</h2>
+                <div class="story-content">
+                    <img src="images/abhi_alone.png" alt="Chef Abhishek" class="story-banner-img">
+                    <div class="story-text">
+                        <p><strong>Driven by Passion & Precision</strong>, Saffron & Sage was built on a simple yet profound truth: <em>Food is the most intimate form of art.</em></p>
+                        <p>My philosophy is rooted in the balance of the elements. I believe that every ingredient has a voice, and a chef's job is not to drown it out but to amplify it. From the earthiness of wild sage to the floral luxury of saffron, our kitchen is a laboratory of taste where we respect the seasons and the farmers who nurture them.</p>
+                        <p>We don't just follow recipes; we follow stories. Every plate is a culmination of centuries-old techniques met with modern curiosity. To dine here is to experience the harmony of tradition and innovation—one bite at a time.</p>
+                        <blockquote>"A chef's ultimate goal is to create a moment of transcendental joy on a plate." — Abhishek</blockquote>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 mt-2" id="close-philosophy-btn">Close Philosophy</button>
+            </div>
+        </div>
+        <!-- Sourcing Modal -->
+        <div id="sourcing-modal" class="modal">
+            <div class="modal-content reveal">
+                <span class="close-modal" id="close-sourcing">&times;</span>
+                <h2 class="section-title text-center">Rooted in Sustainability</h2>
+                <div class="story-content">
+                    <img src="images/sourcing_gen.png" alt="Organic Farm" class="story-banner-img">
+                    <div class="story-text">
+                        <p>At <strong>Saffron & Sage</strong>, our ingredients don't travel thousands of miles. They come from the morning dew of local family farms just outside the city.</p>
+                        <ul class="feature-list">
+                            <li><strong>Organic Harvest:</strong> 100% Pesticide-free seasonal vegetables.</li>
+                            <li><strong>Ethical Sourcing:</strong> Grass-fed dairy and free-range proteins.</li>
+                            <li><strong>Waste Zero:</strong> We compost 90% of our organic kitchen waste to give back to the soil.</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 mt-2" id="close-sourcing-btn">I Support This</button>
+            </div>
+        </div>
+
+        <!-- Craft Modal -->
+        <div id="craft-modal" class="modal">
+            <div class="modal-content reveal">
+                <span class="close-modal" id="close-craft">&times;</span>
+                <h2 class="section-title text-center">Artisanal Mastery</h2>
+                <div class="story-content">
+                    <img src="images/craft_gen.png" alt="Artisanal Cooking" class="story-banner-img">
+                    <div class="story-text">
+                        <p>We believe that time is the most important ingredient. Our kitchen operates on a "Slow Food" principle, where every reduction, dough, and fermentation is given its natural course.</p>
+                        <ul class="feature-list">
+                            <li><strong>Hand-Pulled Pasta:</strong> Made daily with heritage flour.</li>
+                            <li><strong>Wood-Fired Soul:</strong> We use oak and cherry wood for that authentic smoky depth.</li>
+                            <li><strong>The Chef's Touch:</strong> अभिषेक (Abhishek) oversees every single plate that leaves the pass.</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="btn btn-primary w-100 mt-2" id="close-craft-btn">Perfectly Done</button>
+            </div>
+        </div>
+        <!-- FAQ Section (New) -->
+        <section id="faq" class="faq section-padding">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Everything you need to know about Saffron & Sage.</p>
+                </div>
+                
+                <div class="faq-accordion">
+                    <div class="faq-item reveal">
+                        <div class="faq-question">
+                            <span>How do I place an order?</span>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Simply click the "Order Now" button on any menu item. Our secure checkout process will guide you through the payment and confirmation.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <div class="faq-question">
+                            <span>Are your ingredients organic?</span>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We partner with local family farms to source 100% organic, pesticide-free seasonal produce and ethical proteins.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item reveal">
+                        <div class="faq-question">
+                            <span>Do you offer home delivery?</span>
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer express delivery within a 10km radius of our kitchen to ensure your food arrives at the perfect temperature.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Shopping Cart Modal -->
+        <div id="cart-modal" class="modal">
+            <div class="modal-content reveal">
+                <span class="close-modal" id="close-cart-modal">&times;</span>
+                <h2 class="section-title text-center">Your Selection</h2>
+                <div id="cart-items-container" class="cart-scroll">
+                    <!-- Cart items will be injected here -->
+                    <p class="empty-cart-msg">Your selection is currently empty.</p>
+                </div>
+                <div class="cart-summary-total">
+                    <hr>
+                    <div class="receipt-row"><span>Subtotal:</span> <strong id="cart-subtotal">$0.00</strong></div>
+                </div>
+                <button class="btn btn-primary w-100 mt-2" id="checkout-cart-btn">Proceed to Secure Checkout <i class="fas fa-lock"></i></button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <div class="footer-links">
+                <a href="#faq">FAQ</a>
+                <span class="footer-dot">•</span>
+                <a href="admin.html">Admin Login</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div style="margin-bottom: 1.2rem;">
+                <a href="admin.html" style="font-size: 0.75rem; color: rgba(209, 44, 78, 0.4); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-weight: 700;">Manager Login</a>
+            </div>
+            <p class="copy">Handcrafted with <i class="fas fa-heart"></i> & Passion by <span class="copy-name">Abhishek</span>. Where Every Bite Tells a Story.</p>
+        </div>
+    </footer>
+
+    <!-- AI Chat Assistant -->
+    <div id="ai-chat-bubble" class="ai-bubble">
+        <i class="fas fa-robot"></i>
+        <span class="bubble-ping"></span>
+    </div>
+
+    <div id="ai-chat-modal" class="modal ai-modal">
+        <div class="modal-content ai-chat-content animate-slideUp">
+            <div class="ai-chat-header">
+                <div class="ai-status">
+                    <i class="fas fa-robot ai-icon"></i>
+                    <div class="ai-info">
+                        <h4>Saffron AI Helper</h4>
+                        <div class="status-indicator">
+                            <span class="pulse-dot"></span>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="close-modal" id="close-ai-chat">&times;</span>
+            </div>
+            
+            <div class="ai-chat-body" id="ai-messages">
+                <div class="message ai">
+                    <p>Namaste! I'm your AI Dining Assistant. Based on our menu, what are you in the mood for? (e.g., something spicy, vegetarian, or a chef's special?)</p>
+                </div>
+            </div>
+
+            <div class="ai-chat-footer">
+                <div class="ai-input-wrapper">
+                    <input type="text" id="ai-input" placeholder="Ask for suggestions..." autocomplete="off">
+                    <button id="ai-send"><i class="fas fa-paper-plane"></i></button>
+                </div>
+                <div class="ai-suggestions">
+                    <span class="suggestion-chip">Spicy Foods</span>
+                    <span class="suggestion-chip">Best Desserts</span>
+                    <span class="suggestion-chip">Healthy Options</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modern JS -->
+    <script src="https://kit.fontawesome.com/04111552cb.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>

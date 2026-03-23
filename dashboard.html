@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management Dashboard | Saffron & Sage - Fine Dining Admin</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --dashboard-bg: #f8fafc;
+            --card-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        body {
+            background: var(--dashboard-bg);
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: #1a1a1a;
+            color: white;
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar-logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            margin-bottom: 4rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .side-link {
+            padding: 1rem 1.5rem;
+            color: #888;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .side-link:hover, .side-link.active {
+            background: rgba(209, 44, 78, 0.1);
+            color: white;
+        }
+
+        .side-link i { font-size: 1.1rem; }
+        .side-link.active i { color: var(--primary); }
+
+        /* Main Content */
+        .dash-main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 4rem;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: white;
+        }
+
+        /* Stat Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            border-bottom: 4px solid #eee;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover { transform: translateY(-5px); border-bottom-color: var(--primary); }
+
+        .stat-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-value { font-size: 2rem; font-weight: 900; color: #1a1a1a; }
+        .stat-label { font-size: 0.85rem; color: #888; font-weight: 600; text-transform: uppercase; }
+
+        /* Tables */
+        .dash-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 25px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3rem;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #888;
+            text-transform: uppercase;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        td {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #f9f9f9;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+        }
+
+        .badge {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-success { background: #dcfce7; color: #166534; }
+        .badge-pending { background: #fef9c3; color: #854d0e; }
+
+        @media (max-width: 1024px) {
+            .sidebar { width: 80px; padding: 1.5rem; }
+            .sidebar-logo, .side-link span { display: none; }
+            .dash-main { margin-left: 80px; }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Secure Dashboard Gate
+        if (!localStorage.getItem('adminToken')) {
+            window.location.href = "admin.html";
+        }
+    </script>
+    <aside class="sidebar">
+        <div class="sidebar-logo">S&S ADMIN</div>
+        <nav>
+            <a href="#" class="side-link active"><i class="fas fa-chart-line"></i> <span>Dashboard</span></a>
+            <a href="#" class="side-link"><i class="fas fa-utensils"></i> <span>Menu Manager</span></a>
+            <a href="#" class="side-link"><i class="fas fa-receipt"></i> <span>Orders</span></a>
+            <a href="#" class="side-link"><i class="fas fa-star"></i> <span>Reviews</span></a>
+            <a href="#" class="side-link"><i class="fas fa-cog"></i> <span>Settings</span></a>
+            <a href="index.html" class="side-link" style="margin-top: auto;"><i class="fas fa-sign-out-alt"></i> <span>Exit Portal</span></a>
+        </nav>
+    </aside>
+
+    <main class="dash-main">
+        <header class="dash-header">
+            <div>
+                <h1 style="font-weight: 900; font-size: 2.2rem;">Bienvenue, Abhishek!</h1>
+                <p style="color: #888;">Here is what's happening at Saffron & Sage today.</p>
+            </div>
+            <div class="user-profile">
+                <div style="text-align: right;">
+                    <div style="font-weight: 800;">Chef Abhishek</div>
+                    <div style="font-size: 0.75rem; color: var(--primary);">Executive Manager</div>
+                </div>
+                <div class="user-avatar">A</div>
+            </div>
+        </header>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-wallet"></i></div>
+                <div class="stat-value">$1,263.00</div>
+                <div class="stat-label">Total Revenue Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-shopping-bag"></i></div>
+                <div class="stat-value">54</div>
+                <div class="stat-label">New Orders Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-value">1,754</div>
+                <div class="stat-label">Total Happy Diners</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-smile"></i></div>
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Customer Satisfaction</div>
+            </div>
+        </section>
+
+        <section class="dash-card">
+            <div class="card-header">
+                <h3>Live Order Feed</h3>
+                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">View All Orders</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Customer</th>
+                        <th>Item Ordered</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-orders-list">
+                    <!-- Orders loaded here dynamically -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="dash-card">
+            <div class="card-header">
+                <h3>Menu Management Console</h3>
+                <span style="color: #888; font-size: 0.8rem;">Changes reflect instantly on Home Page</span>
+            </div>
+            <div id="admin-menu-list">
+                <!-- Admin items loaded here -->
+            </div>
+        </section>
+
+        <section class="dash-card">
+            <div class="card-header">
+                <h3>Latest Guest Feedback</h3>
+            </div>
+            <div id="admin-feedback-list" style="display: grid; gap: 1.5rem;">
+                <!-- Feedbacks loaded here dynamically -->
+            </div>
+        </section>
+
+        <section class="dash-card">
+            <div class="card-header">
+                <h3>Contact Requests</h3>
+            </div>
+            <div id="admin-contact-list" style="display: grid; gap: 1.5rem;">
+                <!-- Contacts loaded here dynamically -->
+            </div>
+        </section>
+
+        <section class="dash-card">
+            <div class="card-header">
+                <h3>Registered Users</h3>
+            </div>
+            <div id="admin-user-list" style="display: grid; gap: 1.5rem;">
+                <!-- Users loaded here dynamically -->
+            </div>
+        </section>
+
+        <!-- Change Password Section -->
+        <section class="dash-card">
+            <div class="card-header">
+                <h3>System Security</h3>
+            </div>
+            <div style="padding: 1.5rem; background: #fff9f0; border-radius: 15px; border: 1px dashed var(--primary);">
+                <h4 style="margin-bottom: 1rem;"><i class="fas fa-key"></i> Change User Password</h4>
+                <form id="admin-change-password-form" style="display: grid; gap: 1rem; max-width: 400px;">
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem;">User Email</label>
+                        <input type="email" id="cp-email" placeholder="user@example.com" required style="width:100%; border:1px solid #ddd; padding:0.6rem; border-radius:8px;">
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem;">Old Password</label>
+                        <input type="password" id="cp-old" placeholder="••••••••" required style="width:100%; border:1px solid #ddd; padding:0.6rem; border-radius:8px;">
+                    </div>
+                    <div class="form-group">
+                        <label style="font-size: 0.85rem;">New Password</label>
+                        <input type="password" id="cp-new" placeholder="Min 8 chars" required minlength="8" style="width:100%; border:1px solid #ddd; padding:0.6rem; border-radius:8px;">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: fit-content; padding: 0.6rem 1.5rem;">Update Password</button>
+                    <div id="cp-msg" style="font-size: 0.85rem; display: none;"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modern JS -->
+    <script src="https://kit.fontawesome.com/04111552cb.js" crossorigin="anonymous"></script>
+    <script type="module">
+        import { getMenu, updateMenuItem, getOrders, getFeedback, getContacts, getUsers, changePassword } from './js/data.js';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const list = document.getElementById('admin-menu-list');
+            
+            const renderAdminMenu = async () => {
+                const menu = await getMenu();
+                list.innerHTML = menu.map(item => `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid #f9f9f9;">
+                        <div style="display: flex; gap: 1.5rem; align-items: center;">
+                            <img src="${item.img}" style="width: 60px; height: 60px; border-radius: 12px; object-fit: cover;">
+                            <div>
+                                <div style="font-weight: 700;">${item.name}</div>
+                                <div style="font-size: 0.85rem; color: var(--primary);">${item.priceCurrent}</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary edit-btn" data-id="${item.id}" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Edit Item <i class="fas fa-edit"></i></button>
+                    </div>
+                `).join('');
+
+                // Bind Edit Buttons
+                document.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        const id = e.target.closest('button').dataset.id;
+                        const item = menu.find(i => i.id === id);
+                        
+                        const newName = prompt("Edit Item Name:", item.name);
+                        const newPrice = prompt("Edit Current Price (e.g. $12.00):", item.priceCurrent);
+
+                        if (newName && newPrice) {
+                            await updateMenuItem(id, { name: newName, priceCurrent: newPrice });
+                            await renderAdminMenu();
+                            alert("Menu updated successfully! Check your Home Page to see changes.");
+                        }
+                    });
+                });
+            };
+
+            renderAdminMenu();
+
+            const renderOrders = async () => {
+                const ordersList = document.getElementById('admin-orders-list');
+                const orders = await getOrders();
+                ordersList.innerHTML = orders.map(order => `
+                    <tr>
+                        <td><strong>${order.id || '#...'}</strong></td>
+                        <td>${order.payerName || 'Guest'}</td>
+                        <td>${order.item || 'Unknown'}</td>
+                        <td>${order.amount || '$0.00'}</td>
+                        <td><span class="badge badge-success">Completed</span></td>
+                    </tr>
+                `).join('');
+            };
+            
+            const renderFeedback = async () => {
+                const feedbackList = document.getElementById('admin-feedback-list');
+                const feedbacks = await getFeedback();
+                feedbackList.innerHTML = feedbacks.map(f => `
+                    <div style="padding: 1.5rem; background: #fdfdfd; border-radius: 15px; border-left: 4px solid #f1c40f;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong>${f.name}</strong>
+                            <span style="color: #f1c40f;"><i class="fas fa-star"></i> ${f.rating.toFixed(1)}</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #555;">"${f.comment}"</p>
+                        <small style="color:#aaa;">${f.date}</small>
+                    </div>
+                `).join('');
+            };
+
+            const renderContacts = async () => {
+                const contactList = document.getElementById('admin-contact-list');
+                const contacts = await getContacts();
+                contactList.innerHTML = contacts.map(c => `
+                    <div style="padding: 1.5rem; background: #fdfdfd; border-radius: 15px; border-left: 4px solid var(--primary);">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong>${c.name}</strong>
+                            <span style="color: var(--primary); font-size: 0.9rem;">${c.email}</span>
+                        </div>
+                        <p style="font-size: 0.9rem; color: #555;">"${c.message || 'No message'}"</p>
+                        <small style="color:#aaa;">${new Date(c.createdAt).toLocaleString()}</small>
+                    </div>
+                `).join('');
+            };
+
+            const renderUsers = async () => {
+                const userList = document.getElementById('admin-user-list');
+                const users = await getUsers();
+                userList.innerHTML = users.map(u => `
+                    <div style="padding: 1.5rem; background: #fdfdfd; border-radius: 15px; border-left: 4px solid #16a085;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong style="color: #333;"><i class="fas fa-user-circle"></i> ${u.name}</strong>
+                            <span style="color: #16a085; font-size: 0.9rem;">${u.email}</span>
+                        </div>
+                        <small style="color:#aaa;">Registered: ${new Date(u.createdAt).toLocaleString()}</small>
+                    </div>
+                `).join('');
+            };
+
+            const setChangePasswordListeners = () => {
+                const form = document.getElementById('admin-change-password-form');
+                const msg = document.getElementById('cp-msg');
+
+                form.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    msg.style.display = 'none';
+                    
+                    const res = await changePassword({
+                        email: document.getElementById('cp-email').value,
+                        oldPassword: document.getElementById('cp-old').value,
+                        newPassword: document.getElementById('cp-new').value
+                    });
+
+                    if (res.success) {
+                        msg.style.color = 'green';
+                        msg.innerText = res.message;
+                        form.reset();
+                    } else {
+                        msg.style.color = 'var(--primary)';
+                        msg.innerText = res.error;
+                    }
+                    msg.style.display = 'block';
+                });
+            };
+
+            const renderStats = async () => {
+                const orders = await getOrders();
+                const total = orders.reduce((sum, o) => sum + parseFloat((o.amount || '0').replace(/[$,\s]/g, '')), 0);
+                const revEl = document.querySelector('.stat-card:nth-child(1) .stat-value');
+                if(revEl) revEl.innerText = `$${total.toFixed(2)}`;
+                
+                const countEl = document.querySelector('.stat-card:nth-child(2) .stat-value');
+                if(countEl) countEl.innerText = orders.length;
+            };
+
+            const refreshAll = () => {
+                renderAdminMenu();
+                renderOrders();
+                renderFeedback();
+                renderContacts();
+                renderUsers();
+                renderStats();
+            };
+
+            refreshAll();
+            setInterval(refreshAll, 30000); 
+            setChangePasswordListeners();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "saffron-sage",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"cd backend && npm run start\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "vite": "^6.0.0"
+  }
+}

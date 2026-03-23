@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status | Saffron & Sage - Fine Dining Gastronomy</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .status-section { position: relative; z-index: 1; }
+
+        .payment-form {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            animation: slideUp 1s ease-out;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            background: linear-gradient(to right, var(--primary), #ae6b0a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .status-card {
+            background: #fdfdfd;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            border-left: 5px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: left;
+            display: none;
+        }
+
+        .status-card p {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .status-card strong {
+            color: #1a1a1a;
+            display: inline-block;
+            width: 120px;
+        }
+    </style>
+</head>
+<body class="inner-page">
+    <header class="header scrolled">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-mark">
+                    <img src="images/logo_gen.png" alt="Saffron & Sage Logo" class="logo-img-gen">
+                    <div class="logo-container">
+                        <span class="logo-title">Saffron & Sage</span>
+                        <span class="logo-subtitle">Fine Dining Gastronomy</span>
+                    </div>
+                </div>
+            </a>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-list" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="payment-status.html" class="nav-link active">Payment Status</a></li>
+                <li><a href="auth.html" class="nav-link">Sign In</a></li>
+                <li class="nav-cta"><button class="btn btn-primary">+91 9967253466</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="status-section section-padding">
+            <div class="container text-center">
+                <div class="section-header reveal active">
+                    <p class="hero-welcome" style="margin-bottom: 0.5rem;">Track Order</p>
+                    <h2 class="section-title">Check Payment Status</h2>
+                    <p class="section-subtitle">Enter your Order ID (e.g. #TRAX...) from your receipt to view the real-time status of your payment and order.</p>
+                </div>
+
+                <div class="contact-form-wrapper reveal active">
+                    <form id="status-form" class="payment-form">
+                        <div class="form-group" style="text-align: left;">
+                            <label>Order ID</label>
+                            <input type="text" id="order-id-input" placeholder="#TRAX12345678" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 mt-2">Check Status <i class="fas fa-search"></i></button>
+
+                        <div id="loader" style="display: none; margin-top: 1.5rem; color: var(--text-light);">
+                            <i class="fas fa-spinner fa-spin"></i> Searching database...
+                        </div>
+                        
+                        <!-- Error Message -->
+                        <div id="error-message" style="display: none; margin-top: 1.5rem; color: var(--primary); font-weight: 600;">
+                            <i class="fas fa-exclamation-circle"></i> Order not found. Please verify your order ID.
+                        </div>
+
+                        <!-- Result Card -->
+                        <div id="status-result" class="status-card">
+                            <h3 style="margin-bottom: 1.5rem; color: var(--primary);">Order Details</h3>
+                            <p><strong>Order ID:</strong> <span id="res-id"></span></p>
+                            <p><strong>Customer:</strong> <span id="res-name"></span></p>
+                            <p><strong>Item Name:</strong> <span id="res-item"></span></p>
+                            <p><strong>Amount Paid:</strong> <span id="res-amount"></span></p>
+                            <p><strong>Date:</strong> <span id="res-date"></span></p>
+                            <p style="margin-top: 1.5rem;"><strong>Status:</strong> <span class="badge badge-success" style="background:#dcfce7;color:#166534;padding:0.4rem 1rem;border-radius:20px;font-size:0.8rem;">COMPLETED</span></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <div class="footer-links" style="margin-bottom: 1.5rem;">
+                <a href="index.html#faq">FAQ</a>
+                <span class="footer-dot">•</span>
+                <a href="admin.html">Admin Login</a>
+            </div>
+            <p class="copy">Handcrafted with <i class="fas fa-heart"></i> & Passion by <span class="copy-name">Abhishek</span>.</p>
+        </div>
+    </footer>
+
+    <!-- Modern JS -->
+    <script src="https://kit.fontawesome.com/04111552cb.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        const form = document.getElementById('status-form');
+        const API_BASE = 'http://localhost:5001/api';
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const rawId = document.getElementById('order-id-input').value.trim();
+            // User might enter #TRAX123 or just TRAX123, strip the #
+            const orderId = rawId.startsWith('#') ? rawId.substring(1) : rawId;
+            
+            const btn = form.querySelector('button');
+            const loader = document.getElementById('loader');
+            const errorMsg = document.getElementById('error-message');
+            const resultCard = document.getElementById('status-result');
+            
+            // UI Reset
+            errorMsg.style.display = 'none';
+            resultCard.style.display = 'none';
+            btn.style.display = 'none';
+            loader.style.display = 'block';
+
+            try {
+                const response = await fetch(`${API_BASE}/orders/${orderId}`);
+                
+                // Simulate network delay for UX
+                await new Promise(r => setTimeout(r, 800));
+
+                if (!response.ok) {
+                    throw new Error('Order not found');
+                }
+                
+                const data = await response.json();
+                
+                document.getElementById('res-id').innerText = '#' + data.id;
+                document.getElementById('res-name').innerText = data.payerName;
+                document.getElementById('res-item').innerText = data.item;
+                document.getElementById('res-amount').innerText = data.amount;
+                document.getElementById('res-date').innerText = new Date(data.createdAt).toLocaleString();
+                
+                resultCard.style.display = 'block';
+
+            } catch (err) {
+                errorMsg.style.display = 'block';
+            } finally {
+                loader.style.display = 'none';
+                btn.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

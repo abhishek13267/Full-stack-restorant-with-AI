@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Saffron & Sage - Fine Dining Gastronomy</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #fff9f0 0%, #ffffff 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Unique Dynamic Background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(209, 44, 78, 0.03) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: float-bg 20s infinite alternate;
+        }
+
+        @keyframes float-bg {
+            from { transform: translate(0, 0); }
+            to { transform: translate(-100px, 100px); }
+        }
+
+        .contact-section { position: relative; z-index: 1; }
+
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-left: 0 solid var(--primary);
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-left-width: 8px;
+            box-shadow: 0 20px 40px rgba(209, 44, 78, 0.08);
+        }
+
+        .info-card i {
+            font-size: 2rem;
+            color: #f39c12; /* Unique Tuscan Gold */
+            background: #fff9f0;
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .payment-form {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            animation: slideUp 1s ease-out;
+        }
+
+        .section-title {
+            background: linear-gradient(to right, var(--primary), #ae6b0a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body class="inner-page">
+    <header class="header scrolled">
+        <nav class="nav container">
+            <a href="index.html" class="nav-logo">
+                <div class="logo-mark">
+                    <img src="images/logo_gen.png" alt="Saffron & Sage Logo" class="logo-img-gen">
+                    <div class="logo-container">
+                        <span class="logo-title">Saffron & Sage</span>
+                        <span class="logo-subtitle">Fine Dining Gastronomy</span>
+                    </div>
+                </div>
+            </a>
+            
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-list" id="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                <li><a href="feedback.html" class="nav-link">Feedback</a></li>
+                <li><a href="payment-status.html" class="nav-link">Pay Status</a></li>
+                <li><a href="auth.html" class="nav-link">Sign In</a></li>
+                <li class="nav-cta"><button class="btn btn-primary">+91 9967253466</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="contact-section section-padding">
+            <div class="container">
+                <div class="section-header text-center reveal active">
+                    <p class="hero-welcome" style="margin-bottom: 0.5rem;">Get in Touch</p>
+                    <h2 class="section-title">Connect with Our Kitchen</h2>
+                    <p class="section-subtitle">We would love to hear from you. Have a question or want to make a special request?</p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-info reveal active">
+                        <div class="info-card">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Visit Us</h4>
+                                <p>Saffron & Sage Estate, 12th Avenue, Mumbai, India</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <h4>Call Our Chef</h4>
+                                <p>+91 9967253466</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>hello@saffronsage.com</p>
+                            </div>
+                        </div>
+                        <div class="info-card">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Mon - Fri: 12 PM - 11 PM<br>Sat - Sun: 10 AM - 12 AM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-wrapper reveal active">
+                        <form id="contact-form" class="payment-form">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" placeholder="Abhishek..." required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="abhi@example.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Your Message (Optional)</label>
+                                <textarea rows="5" class="w-100" style="padding: 1rem; border-radius: 12px; border: 1px solid #ddd;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container text-center">
+            <div class="footer-links" style="margin-bottom: 1.5rem;">
+                <a href="index.html#faq">FAQ</a>
+                <span class="footer-dot">•</span>
+                <a href="admin.html">Admin Login</a>
+            </div>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p class="copy">Handcrafted with <i class="fas fa-heart"></i> & Passion by <span class="copy-name">Abhishek</span>. Where Every Bite Tells a Story.</p>
+        </div>
+    </footer>
+
+    <!-- Modern JS -->
+    <script src="https://kit.fontawesome.com/04111552cb.js" crossorigin="anonymous"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module">
+        import { saveContact } from './js/data.js';
+
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const btn = form.querySelector('button[type="submit"]');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin"></i>';
+                
+                const contactData = {
+                    name: form.querySelector('input[type="text"]').value,
+                    email: form.querySelector('input[type="email"]').value,
+                    message: form.querySelector('textarea').value
+                };
+                
+                await saveContact(contactData);
+                
+                btn.innerHTML = 'Message Sent! <i class="fas fa-check"></i>';
+                btn.classList.replace('btn-primary', 'btn-secondary');
+                form.reset();
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.replace('btn-secondary', 'btn-primary');
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
