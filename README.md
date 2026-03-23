@@ -138,10 +138,10 @@ Then fill in your values in `backend/.env`:
 
 ```env
 PORT=5001
-ADMIN_USERNAME=abhi123
-ADMIN_PASSWORD=12345
+ADMIN_USERNAME=your_username
+ADMIN_PASSWORD=your_strong_password
 DB_FILE=./database.sqlite
-PAYPAL_CLIENT_ID=sb
+PAYPAL_CLIENT_ID=your_client_id
 PAYPAL_CURRENCY=USD
 ```
 
